@@ -245,7 +245,7 @@
   <div class="container">
     <header>
       <h1>Online Storefront</h1>
-      <p>Real-time stock straight from Google Sheets</p>
+      <p>Live inventory from Google Sheets</p>
     </header>
 
     <div class="controls">
@@ -263,28 +263,14 @@
   </div>
 
   <script>
-    // 1. Paste your published Google Sheet CSV link here:
-    const const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vR2mkmVn581LvSUbWkDW1qn2mkk9thOq3-weJHAE3z_jChZ_T-wL_oAXh24UAzGBBWxyc4p3OBAAA7L/pub?gid=0&single=true&output=csv";
+    // Live CSV link from your published Google Sheet
+    const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vR2mkmVn581LvSUbWkDW1qn2mkk9thOq3-weJHAE3z_jChZ_T-wL_oAXh24UAzGBBWxyc4p3OBAAA7L/pub?gid=0&single=true&output=csv";
 
     let allProducts = [];
     let activeCategory = "ALL";
     let searchQuery = "";
 
     function loadInventory() {
-      // If no link is configured yet, fall back to initial items
-      if (SHEET_CSV_URL === "YOUR_GOOGLE_SHEET_CSV_URL_HERE" || !SHEET_CSV_URL) {
-        allProducts = [
-          { Title: "Korean Trendy Silver-Tone Double Hoop Earrings", Category: "Earrings & Studs", Price: "100", Stock: "2", SKU: "KOB-4024", Image_URL: "https://images.meesho.com/images/products/1140570734/a7iqc.avif", Meesho_Link: "https://www.meesho.com/s/p/iv2e0e" },
-          { Title: "Korean mixed color enamel pearl drop earrings", Category: "Earrings & Studs", Price: "81", Stock: "1", SKU: "mak465shi", Image_URL: "https://images.meesho.com/images/products/1137170030/2agrn.avif", Meesho_Link: "https://www.meesho.com/s/p/it1i0e" },
-          { Title: "Korean style blue enamel pearl earrings for women", Category: "Earrings & Studs", Price: "82", Stock: "1", SKU: "mitytu0987", Image_URL: "https://images.meesho.com/images/products/1137162350/wszam.avif", Meesho_Link: "https://www.meesho.com/s/p/it1c32" },
-          { Title: "Korean style blue heart shaped hoop earrings for women", Category: "Earrings & Studs", Price: "94", Stock: "2", SKU: "savi-tha2345", Image_URL: "https://images.meesho.com/images/products/1137125148/h41xt.avif", Meesho_Link: "https://www.meesho.com/s/p/it0jdo" }
-        ];
-        initFilters();
-        renderProducts();
-        return;
-      }
-
-      // Fetch live CSV using PapaParse
       Papa.parse(SHEET_CSV_URL, {
         download: true,
         header: true,
@@ -296,7 +282,7 @@
         },
         error: function(err) {
           document.getElementById("productGrid").innerHTML = 
-            `<div class="status-message">Failed to load inventory. Check your sheet sharing permissions.</div>`;
+            `<div class="status-message">Failed to load inventory. Please check sheet permissions.</div>`;
         }
       });
     }
@@ -305,7 +291,6 @@
       const filterContainer = document.getElementById("categoryFilters");
       const categories = [...new Set(allProducts.map(p => p.Category).filter(Boolean))];
       
-      // Preserve "All Products" button
       filterContainer.innerHTML = '<button class="pill active" data-category="ALL">All Products</button>';
 
       categories.forEach(cat => {
