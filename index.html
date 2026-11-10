@@ -245,7 +245,7 @@
   <div class="container">
     <header>
       <h1>Online Storefront</h1>
-      <p>Live inventory from Google Sheets</p>
+      <p>Real-time stock straight from Google Sheets</p>
     </header>
 
     <div class="controls">
@@ -263,26 +263,46 @@
   </div>
 
   <script>
-    // Live CSV link from your published Google Sheet
-    const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vR2mkmVn581LvSUbWkDW1qn2mkk9thOq3-weJHAE3z_jChZ_T-wL_oAXh24UAzGBBWxyc4p3OBAAA7L/pub?gid=0&single=true&output=csv";
+    // Direct Google Visualization API query endpoint (bypasses CORS/redirect issues)
+    const SHEET_ID = "1ewfRaVosGhRDP2olfic69dQjX7R4HqVqiJ4-88S_n5U";
+    const DIRECT_CSV_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=Sheet1`;
 
     let allProducts = [];
     let activeCategory = "ALL";
     let searchQuery = "";
 
     function loadInventory() {
-      Papa.parse(SHEET_CSV_URL, {
+      Papa.parse(DIRECT_CSV_URL, {
         download: true,
         header: true,
         skipEmptyLines: true,
         complete: function(results) {
-          allProducts = results.data.filter(row => row.Title && row.Title.trim() !== "");
+          // Normalize column headers and clean extra quotation marks
+          allProducts = results.data
+            .map(row => {
+              const cleaned = {};
+              for (const key in row) {
+                const cleanKey = key.replace(/['"]+/g, '').trim();
+                const val = typeof row[key] === 'string' ? row[key].replace(/^["']|["']$/g, '').trim() : row[key];
+                cleaned[cleanKey] = val;
+              }
+              return cleaned;
+            })
+            .filter(row => row.Title && row.Title.trim() !== "");
+
+          if (allProducts.length === 0) {
+            document.getElementById("productGrid").innerHTML = 
+              `<div class="status-message">No products found in the sheet.</div>`;
+            return;
+          }
+
           initFilters();
           renderProducts();
         },
         error: function(err) {
+          console.error("PapaParse error:", err);
           document.getElementById("productGrid").innerHTML = 
-            `<div class="status-message">Failed to load inventory. Please check sheet permissions.</div>`;
+            `<div class="status-message">Failed to load inventory. Please ensure the Google Sheet's General Access is set to 'Anyone with the link can view'.</div>`;
         }
       });
     }
