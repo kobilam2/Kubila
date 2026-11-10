@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Inventory Storefront</title>
+  <title>Kubila Jewellery Collection</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -14,8 +14,8 @@
       --bg: #0f172a;
       --card-bg: #1e293b;
       --card-border: #334155;
-      --accent: #38bdf8;
-      --accent-hover: #0ea5e9;
+      --accent: #d4af37; /* Metallic Warm Gold matching the sticker logo */
+      --accent-hover: #b8901c;
       --text-main: #f8fafc;
       --text-muted: #94a3b8;
       --badge-stock: #10b981;
@@ -41,21 +41,99 @@
       margin: 0 auto;
     }
 
+    /* Brand Header Styling with New Circular Sticker Logo */
     header {
       text-align: center;
-      margin-bottom: 2.5rem;
+      margin-bottom: 3rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .brand-logo-container {
+      position: relative;
+      width: 130px;
+      height: 130px;
+      margin-bottom: 1.25rem;
+    }
+
+    /* Sticker Style Visual recreation of KOBILA/KUBILA Badge */
+    .sticker-logo {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      border: 3px double var(--accent);
+      background: radial-gradient(circle, #251b08 0%, #0f172a 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: var(--accent);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(212, 175, 55, 0.2);
+      padding: 10px;
+    }
+
+    .sticker-diamond {
+      font-size: 0.9rem;
+      line-height: 1;
+      margin-bottom: -1px;
+    }
+
+    .sticker-k {
+      font-family: serif;
+      font-size: 3rem;
+      font-weight: 500;
+      line-height: 1.1;
+      position: relative;
+      display: inline-block;
+      margin-top: -5px;
+    }
+
+    .sticker-k::after {
+      content: '✦';
+      font-size: 0.75rem;
+      position: absolute;
+      top: 15px;
+      right: -15px;
+    }
+
+    .sticker-brand-name {
+      font-family: serif;
+      font-size: 1.1rem;
+      letter-spacing: 0.12em;
+      font-weight: bold;
+      margin-top: -5px;
+      text-transform: uppercase;
+    }
+
+    .sticker-subtext {
+      font-size: 0.38rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      opacity: 0.9;
+      margin-top: 1px;
+    }
+
+    .sticker-footer-star {
+      font-size: 0.45rem;
+      margin-top: 2px;
     }
 
     header h1 {
       font-size: 2.2rem;
       font-weight: 700;
-      margin-bottom: 0.5rem;
-      letter-spacing: -0.02em;
+      margin-bottom: 0.4rem;
+      letter-spacing: -0.01em;
+      color: #fff;
     }
 
     header p {
-      color: var(--text-muted);
-      font-size: 1rem;
+      color: var(--accent);
+      font-size: 0.95rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-weight: 600;
+      opacity: 0.9;
     }
 
     .controls {
@@ -111,6 +189,7 @@
       background: var(--accent);
       color: #000;
       border-color: var(--accent);
+      font-weight: 600;
     }
 
     .product-grid {
@@ -211,7 +290,7 @@
     }
 
     .price {
-      font-size: 1.2rem;
+      font-size: 1.25rem;
       font-weight: 700;
       color: #fff;
     }
@@ -244,8 +323,18 @@
 
   <div class="container">
     <header>
-      <h1>Online Storefront</h1>
-      <p>Real-time stock straight from Google Sheets</p>
+      <!-- Circular Brand Custom Sticker Logo matching image_4.png -->
+      <div class="brand-logo-container">
+        <div class="sticker-logo">
+          <div class="sticker-diamond">♦</div>
+          <div class="sticker-k">K</div>
+          <div class="sticker-brand-name">Kubila</div>
+          <div class="sticker-subtext">JEWELLERY COLLECTION</div>
+          <div class="sticker-footer-star">✦</div>
+        </div>
+      </div>
+      <h1>Kubila Jewellery Collection</h1>
+      <p>JEWELLERY THAT SHINES</p>
     </header>
 
     <div class="controls">
@@ -258,12 +347,12 @@
     </div>
 
     <div class="product-grid" id="productGrid">
-      <div class="status-message">Loading inventory...</div>
+      <div class="status-message">Loading collection...</div>
     </div>
   </div>
 
   <script>
-    // Direct Google Visualization API query endpoint (bypasses CORS/redirect issues)
+    // Live CSV query endpoint (bypasses CORS using your direct sheet ID)
     const SHEET_ID = "1ewfRaVosGhRDP2olfic69dQjX7R4HqVqiJ4-88S_n5U";
     const DIRECT_CSV_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=Sheet1`;
 
@@ -277,7 +366,7 @@
         header: true,
         skipEmptyLines: true,
         complete: function(results) {
-          // Normalize column headers and clean extra quotation marks
+          // Normalize column headers and clean quotes
           allProducts = results.data
             .map(row => {
               const cleaned = {};
@@ -302,7 +391,7 @@
         error: function(err) {
           console.error("PapaParse error:", err);
           document.getElementById("productGrid").innerHTML = 
-            `<div class="status-message">Failed to load inventory. Please ensure the Google Sheet's General Access is set to 'Anyone with the link can view'.</div>`;
+            `<div class="status-message">Failed to load inventory. Please check that Google Sheet sharing is set to "Anyone with the link can view".</div>`;
         }
       });
     }
