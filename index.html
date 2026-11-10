@@ -3,29 +3,35 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kobila - Meesho Seller Catalog & Inventory</title>
-  <!-- Tailwind CSS CDN -->
+  <title>Kobila — Jewellery that shines | Direct Meesho Reseller</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Phosphor Icons CDN -->
-  <script src="https://unpkg.com/@phosphor-icons/web"></script>
-  <!-- Google Fonts Inter -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script>
     tailwind.config = {
       theme: {
         extend: {
           fontFamily: {
-            sans: ['Inter', 'sans-serif'],
+            serif: ['Cinzel', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
           },
           colors: {
-            meesho: {
-              pink: '#F43397',
-              darkpink: '#D81B60',
-              purple: '#9B27B0',
-              light: '#FFF0F5'
+            brand: {
+              50: '#fdf2f8',
+              100: '#fce7f3',
+              500: '#ec4899',
+              600: '#db2777',
+              700: '#be185d',
+              900: '#500724',
+              meesho: '#f43397',
+              meeshoDark: '#9f208c'
+            },
+            gold: {
+              400: '#fbbf24',
+              500: '#f59e0b',
+              600: '#d97706',
             }
           }
         }
@@ -33,1238 +39,706 @@
     }
   </script>
   <style>
-    /* Custom scrollbar for horizontal categories & drawers */
-    .no-scrollbar::-webkit-scrollbar {
-      display: none;
-    }
-    .no-scrollbar {
-      -ms-overflow-style: none;
-      scrollbar-width: none;
+    .glass-nav {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px);
     }
   </style>
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col antialiased">
+<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col">
 
-  <!-- TOP ANNOUNCEMENT BANNER -->
-  <div class="bg-gradient-to-r from-pink-600 via-meesho-pink to-purple-600 text-white text-xs sm:text-sm py-2 px-4 text-center font-medium shadow-sm flex items-center justify-center gap-2">
-    <i class="ph-bold ph-sparkle text-yellow-300"></i>
-    <span>Free Delivery & COD Available on Meesho • Direct Factory Prices!</span>
-    <i class="ph-bold ph-shield-check text-green-300 ml-1"></i>
+  <!-- Top Announcement Bar -->
+  <div class="bg-gradient-to-r from-pink-700 via-brand-meeshoDark to-brand-meesho text-white text-xs font-medium py-2 px-4">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <span class="bg-white/20 px-2 py-0.5 rounded text-[10px] uppercase font-bold tracking-wider">Official Store</span>
+        <span>✨ Welcome to Kobila: Jewellery that shines • Cash on Delivery & Free Shipping via Meesho</span>
+      </div>
+      <div class="hidden sm:flex items-center gap-4 text-[11px]">
+        <span><i class="fa-solid fa-rotate-left mr-1"></i> Easy 7-Day Returns</span>
+        <span><i class="fa-solid fa-shield-halved mr-1"></i> 100% Verified Quality</span>
+      </div>
+    </div>
   </div>
 
-  <!-- HEADER & NAVIGATION -->
-  <header class="sticky top-0 z-30 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm transition-all">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-16 sm:h-20 gap-4">
-        
-        <!-- Store Brand / Logo -->
-        <div class="flex items-center gap-3">
-          <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-gradient-to-tr from-pink-500 to-purple-600 flex items-center justify-center text-white shadow-md shadow-pink-200">
-            <span class="text-xl sm:text-2xl font-black tracking-tight">K</span>
-          </div>
-          <div>
-            <div class="flex items-center gap-2">
-              <h1 id="storeNameDisplay" class="font-bold text-lg sm:text-xl text-slate-900 tracking-tight leading-none">Kobila</h1>
-              <span class="bg-pink-100 text-pink-700 font-bold text-[10px] uppercase px-2 py-0.5 rounded-full border border-pink-200">Meesho Partner</span>
-            </div>
-            <p id="storeTaglineDisplay" class="text-xs text-slate-500 mt-0.5 hidden sm:block">Kobila Collection • Direct Meesho Reseller</p>
-          </div>
+  <!-- Header -->
+  <header class="glass-nav border-b border-pink-100 sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex items-center justify-between gap-4">
+      <!-- Brand -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-meesho to-amber-400 flex items-center justify-center text-white font-serif font-extrabold text-xl shadow-md shadow-pink-500/20 group-hover:scale-105 transition-transform">
+          K
         </div>
+        <div>
+          <span class="font-serif font-extrabold text-2xl tracking-wide bg-gradient-to-r from-brand-900 via-pink-700 to-amber-600 bg-clip-text text-transparent">KOBILA</span>
+          <p class="text-[11px] font-semibold text-pink-600 -mt-1 tracking-wider uppercase">Jewellery that shines</p>
+        </div>
+      </a>
 
-        <!-- Desktop Search Bar -->
-        <div class="hidden md:flex flex-1 max-w-md relative">
-          <input 
-            type="text" 
-            id="desktopSearchInput"
-            placeholder="Search kurtis, sarees, jewelry, watches..." 
-            class="w-full pl-10 pr-4 py-2.5 bg-slate-100 hover:bg-slate-50 focus:bg-white text-sm rounded-full border border-slate-200 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all"
+      <!-- Search Input -->
+      <div class="flex-1 max-w-md hidden md:block">
+        <div class="relative">
+          <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+          <input
+            id="searchInput"
+            type="text"
+            placeholder="Search earrings, studs, bangles, SKU..."
+            class="w-full bg-slate-100 hover:bg-slate-200/70 focus:bg-white text-sm pl-10 pr-4 py-2 rounded-full border border-transparent focus:border-pink-300 focus:outline-none transition-all"
             oninput="handleSearch(this.value)"
           />
-          <i class="ph-bold ph-magnifying-glass absolute left-3.5 top-3 text-slate-400"></i>
-        </div>
-
-        <!-- Right Quick Actions -->
-        <div class="flex items-center gap-2 sm:gap-3">
-          <!-- WhatsApp Contact Button -->
-          <a 
-            id="headerWhatsappBtn"
-            href="https://wa.me/919876543210?text=Hello%20Kobila!%20I%20want%20to%20inquire%20about%20your%20products." 
-            target="_blank" 
-            rel="noopener noreferrer"
-            class="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-2 bg-emerald-500 hover:bg-emerald-600 text-white text-xs sm:text-sm font-semibold rounded-xl shadow-sm transition"
-            title="Chat on WhatsApp"
-          >
-            <i class="ph-fill ph-whatsapp-logo text-base"></i>
-            <span>Chat Seller</span>
-          </a>
-
-          <!-- Admin Mode Toggle Button -->
-          <button 
-            onclick="openInventoryDrawer()" 
-            class="inline-flex items-center gap-1.5 px-3 py-2 bg-slate-900 hover:bg-slate-800 text-white text-xs sm:text-sm font-medium rounded-xl shadow-sm transition"
-            title="Manage Products"
-          >
-            <i class="ph-bold ph-sliders-horizontal text-base text-pink-400"></i>
-            <span class="hidden sm:inline">Seller Inventory</span>
-            <span class="sm:hidden font-semibold">Admin</span>
-          </button>
         </div>
       </div>
 
-      <!-- Mobile Search Input (Visible on small screens) -->
-      <div class="pb-3 md:hidden">
-        <div class="relative">
-          <input 
-            type="text" 
-            id="mobileSearchInput"
-            placeholder="Search products, codes, sarees..." 
-            class="w-full pl-9 pr-4 py-2 bg-slate-100 text-sm rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-pink-500"
-            oninput="handleSearch(this.value)"
-          />
-          <i class="ph-bold ph-magnifying-glass absolute left-3 top-2.5 text-slate-400"></i>
-        </div>
+      <!-- Action Buttons -->
+      <div class="flex items-center gap-2 sm:gap-3">
+        <a id="directWaHeader" href="https://wa.me/919999999999?text=Hello%20Kobila!%20I%20am%20interested%20in%20your%20jewellery%20collection." target="_blank" class="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 hover:bg-emerald-100 transition">
+          <i class="fa-brands fa-whatsapp text-emerald-600 text-sm"></i>
+          <span>WhatsApp Chat</span>
+        </a>
+        <button onclick="toggleAdminDrawer()" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold text-pink-700 bg-pink-50 border border-pink-200 hover:bg-pink-100 transition">
+          <i class="fa-solid fa-boxes-stacked"></i>
+          <span class="hidden sm:inline">Manage Stock</span>
+        </button>
       </div>
     </div>
   </header>
 
-  <!-- STORE HERO / PROMO BANNER -->
-  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4 sm:mt-6">
-    <div class="rounded-2xl bg-gradient-to-r from-pink-50 via-rose-50 to-purple-50 border border-pink-100 p-4 sm:p-6 lg:p-8 flex flex-col md:flex-row items-center justify-between gap-6 shadow-sm">
-      <div class="space-y-2 text-center md:text-left">
-        <div class="inline-flex items-center gap-2 bg-white px-3 py-1 rounded-full text-xs font-semibold text-pink-600 shadow-sm border border-pink-100">
-          <span class="w-2 h-2 rounded-full bg-pink-500 animate-pulse"></span>
-          Kobila Meesho Collection • Factory Direct Deals
+  <!-- Hero Banner -->
+  <section class="relative bg-gradient-to-b from-pink-100/70 via-rose-50/40 to-slate-50 border-b border-pink-100/60 py-10 px-4">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
+      <div class="max-w-xl text-center md:text-left">
+        <div class="inline-flex items-center gap-2 bg-pink-100 text-pink-800 text-xs font-bold px-3 py-1 rounded-full mb-3">
+          <i class="fa-solid fa-sparkles text-amber-500"></i> Direct Supplier Pricing
         </div>
-        <h2 class="text-xl sm:text-3xl font-extrabold text-slate-900">Kobila Trends, Verified Meesho Deals</h2>
-        <p class="text-xs sm:text-sm text-slate-600 max-w-xl">
-          Browse our handpicked inventory. Click <span class="font-semibold text-pink-600">"Buy on Meesho"</span> to order securely with Meesho's return guarantee or message us directly via WhatsApp for bulk orders.
+        <h1 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 leading-tight">
+          Handcrafted & Trending <span class="bg-gradient-to-r from-pink-600 via-rose-500 to-amber-500 bg-clip-text text-transparent">Jewellery That Shines</span>
+        </h1>
+        <p class="mt-3 text-sm sm:text-base text-slate-600 leading-relaxed">
+          Explore our official Meesho inventory of premium Korean studs, silver-tone hoops, traditional jhumkas, and designer bangles. Order directly through Meesho or WhatsApp with verified quality assurance.
         </p>
+        <div class="mt-5 flex flex-wrap items-center justify-center md:justify-start gap-3">
+          <a href="#catalog" class="px-5 py-2.5 rounded-full bg-gradient-to-r from-pink-600 to-brand-meesho text-white text-xs sm:text-sm font-bold shadow-lg shadow-pink-500/25 hover:shadow-pink-500/40 hover:scale-[1.02] transition">
+            View Live Products (<span id="totalBadge">7</span>)
+          </a>
+          <button onclick="filterCategory('All')" class="px-4 py-2.5 rounded-full bg-white border border-slate-200 text-slate-700 text-xs sm:text-sm font-semibold hover:border-pink-300 transition shadow-sm">
+            Browse All Styles
+          </button>
+        </div>
       </div>
-      <div class="flex flex-wrap items-center justify-center gap-3 w-full md:w-auto">
-        <div class="flex items-center gap-2 bg-white px-4 py-2.5 rounded-xl border border-slate-100 shadow-sm">
-          <i class="ph-fill ph-truck text-pink-500 text-xl"></i>
-          <div class="text-left">
-            <p class="text-[11px] text-slate-400 font-medium">Delivery</p>
-            <p class="text-xs font-bold text-slate-800">Free All Over India</p>
+
+      <div class="grid grid-cols-2 gap-3 max-w-sm w-full">
+        <div class="bg-white p-3.5 rounded-2xl shadow-sm border border-pink-100 flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-pink-100 text-pink-600 flex items-center justify-center font-bold text-lg"><i class="fa-solid fa-gem"></i></div>
+          <div>
+            <p class="text-xs font-bold text-slate-900">Anti-Tarnish Polish</p>
+            <p class="text-[11px] text-slate-500">Long-lasting shine</p>
           </div>
         </div>
-        <div class="flex items-center gap-2 bg-white px-4 py-2.5 rounded-xl border border-slate-100 shadow-sm">
-          <i class="ph-fill ph-arrows-counter-clockwise text-emerald-500 text-xl"></i>
-          <div class="text-left">
-            <p class="text-[11px] text-slate-400 font-medium">Returns</p>
-            <p class="text-xs font-bold text-slate-800">7 Days Easy Return</p>
+        <div class="bg-white p-3.5 rounded-2xl shadow-sm border border-pink-100 flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold text-lg"><i class="fa-solid fa-truck-fast"></i></div>
+          <div>
+            <p class="text-xs font-bold text-slate-900">COD Available</p>
+            <p class="text-[11px] text-slate-500">Pay on delivery</p>
+          </div>
+        </div>
+        <div class="bg-white p-3.5 rounded-2xl shadow-sm border border-pink-100 flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center font-bold text-lg"><i class="fa-solid fa-tag"></i></div>
+          <div>
+            <p class="text-xs font-bold text-slate-900">Starts ₹100</p>
+            <p class="text-[11px] text-slate-500">Factory direct price</p>
+          </div>
+        </div>
+        <div class="bg-white p-3.5 rounded-2xl shadow-sm border border-pink-100 flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center font-bold text-lg"><i class="fa-solid fa-rotate-left"></i></div>
+          <div>
+            <p class="text-xs font-bold text-slate-900">Easy Returns</p>
+            <p class="text-[11px] text-slate-500">7 days Meesho guarantee</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CONTROLS: CATEGORIES & FILTER BAR -->
-  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
-    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-2 border-b border-slate-200">
-      
-      <!-- Horizontal Scrollable Category Pills -->
-      <div id="categoryContainer" class="flex items-center gap-2 overflow-x-auto no-scrollbar py-1">
-        <!-- Generated via JS -->
-      </div>
-
-      <!-- Sorting & Stock Filter -->
-      <div class="flex items-center gap-3 justify-end self-end md:self-auto text-xs sm:text-sm">
-        <div class="flex items-center gap-1.5 bg-white px-3 py-1.5 rounded-lg border border-slate-200">
-          <i class="ph-bold ph-funnel text-slate-400"></i>
-          <select id="stockFilter" onchange="filterProducts()" class="bg-transparent font-medium text-slate-700 focus:outline-none cursor-pointer">
-            <option value="all">All Items</option>
-            <option value="in_stock">In Stock Only</option>
-            <option value="trending">Trending Hot</option>
-          </select>
-        </div>
-
-        <div class="flex items-center gap-1.5 bg-white px-3 py-1.5 rounded-lg border border-slate-200">
-          <i class="ph-bold ph-sort-ascending text-slate-400"></i>
-          <select id="sortBy" onchange="filterProducts()" class="bg-transparent font-medium text-slate-700 focus:outline-none cursor-pointer">
-            <option value="featured">Featured First</option>
-            <option value="price_low">Price: Low to High</option>
-            <option value="price_high">Price: High to Low</option>
-            <option value="discount">Biggest Discount</option>
-          </select>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CATALOG GRID -->
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-1 w-full">
+  <!-- Main Storefront Catalog -->
+  <main id="catalog" class="max-w-7xl mx-auto px-4 sm:px-6 py-8 flex-1 w-full">
     
-    <!-- Count & Active Filter Indicator -->
-    <div class="flex items-center justify-between mb-6">
-      <p id="productsCountText" class="text-xs sm:text-sm font-semibold text-slate-500">
-        Showing all products
-      </p>
-      <button 
-        id="clearFiltersBtn" 
-        onclick="resetAllFilters()" 
-        class="text-xs text-pink-600 hover:text-pink-700 font-semibold hidden items-center gap-1"
-      >
-        <i class="ph-bold ph-arrow-counter-clockwise"></i> Reset Filters
-      </button>
+    <!-- Filter Bar -->
+    <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 pb-6 border-b border-slate-200">
+      <!-- Category Pills -->
+      <div id="categoryPills" class="flex items-center gap-2 overflow-x-auto pb-1 sm:pb-0 scrollbar-none">
+        <!-- Rendered via JS -->
+      </div>
+
+      <!-- Sorting -->
+      <div class="flex items-center justify-end gap-2 text-xs">
+        <label for="sortSelect" class="text-slate-500 font-medium">Sort By:</label>
+        <select id="sortSelect" onchange="handleSort(this.value)" class="bg-white border border-slate-200 rounded-lg px-2.5 py-1.5 font-medium text-slate-700 focus:outline-none focus:border-pink-500">
+          <option value="featured">Featured / Newest</option>
+          <option value="price-low">Price: Low to High</option>
+          <option value="price-high">Price: High to Low</option>
+        </select>
+      </div>
     </div>
 
-    <!-- Products Card Grid -->
-    <div id="productsGrid" class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6">
-      <!-- Injected via JavaScript -->
+    <!-- Product Grid -->
+    <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-6">
+      <!-- Rendered dynamically -->
     </div>
 
     <!-- Empty State -->
-    <div id="noProductsFound" class="hidden py-16 text-center">
-      <div class="w-16 h-16 mx-auto rounded-full bg-pink-50 text-pink-500 flex items-center justify-center mb-3">
-        <i class="ph-bold ph-magnifying-glass text-2xl"></i>
+    <div id="emptyState" class="hidden text-center py-16">
+      <div class="w-16 h-16 mx-auto mb-3 rounded-full bg-pink-100 text-pink-600 flex items-center justify-center text-2xl">
+        <i class="fa-solid fa-magnifying-glass"></i>
       </div>
-      <h3 class="text-base font-bold text-slate-800">No matching items found</h3>
-      <p class="text-xs text-slate-500 mt-1 max-w-sm mx-auto">Try clearing your search term, changing categories, or adding new items to your seller inventory.</p>
-      <button onclick="resetAllFilters()" class="mt-4 px-4 py-2 bg-pink-600 text-white text-xs font-semibold rounded-lg shadow-sm">
-        View All Items
+      <h3 class="text-base font-bold text-slate-800">No matching jewellery items found</h3>
+      <p class="text-xs text-slate-500 mt-1">Try resetting your search query or category filter.</p>
+      <button onclick="resetFilters()" class="mt-4 px-4 py-1.5 rounded-full bg-pink-600 text-white text-xs font-semibold hover:bg-pink-700">
+        Clear All Filters
       </button>
     </div>
   </main>
 
-  <!-- PRODUCT QUICK PREVIEW MODAL -->
-  <div id="productDetailModal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm hidden items-center justify-center p-4">
-    <div class="bg-white rounded-2xl max-w-xl w-full overflow-hidden shadow-2xl relative max-h-[90vh] flex flex-col">
-      <button onclick="closeProductModal()" class="absolute top-3 right-3 z-10 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center justify-center transition">
-        <i class="ph-bold ph-x text-base"></i>
-      </button>
-      <div id="modalBody" class="overflow-y-auto p-5 sm:p-6">
-        <!-- Rendered via JS -->
-      </div>
-    </div>
-  </div>
-
-  <!-- SELLER INVENTORY MANAGER / ADMIN DRAWER -->
-  <div id="inventoryDrawerBackdrop" onclick="closeInventoryDrawer()" class="fixed inset-0 z-40 bg-slate-900/50 backdrop-blur-sm hidden transition-opacity"></div>
-  
-  <aside id="inventoryDrawer" class="fixed right-0 top-0 bottom-0 z-50 w-full max-w-xl bg-white shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col">
-    <!-- Drawer Header -->
-    <div class="p-4 sm:p-5 border-b border-slate-200 flex items-center justify-between bg-slate-50">
+  <!-- Footer -->
+  <footer class="bg-slate-900 text-slate-400 text-xs py-8 border-t border-slate-800 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
       <div class="flex items-center gap-2">
-        <div class="p-2 bg-pink-100 text-pink-600 rounded-lg">
-          <i class="ph-fill ph-package text-xl"></i>
-        </div>
-        <div>
-          <h2 class="font-bold text-slate-900 text-base">Seller Inventory Hub</h2>
-          <p class="text-xs text-slate-500">Add, edit, backup, or sync Meesho items</p>
-        </div>
+        <div class="w-6 h-6 rounded-md bg-pink-600 text-white flex items-center justify-center font-serif font-bold text-xs">K</div>
+        <span class="font-serif font-bold text-white tracking-wide">KOBILA</span>
+        <span>• Jewellery that shines</span>
       </div>
-      <button onclick="closeInventoryDrawer()" class="w-8 h-8 rounded-full hover:bg-slate-200 text-slate-600 flex items-center justify-center">
-        <i class="ph-bold ph-x text-lg"></i>
-      </button>
-    </div>
-
-    <!-- Drawer Tabs -->
-    <div class="flex border-b border-slate-200 px-4 bg-white text-xs sm:text-sm font-semibold">
-      <button id="tabAddProductBtn" onclick="switchAdminTab('form')" class="py-3 px-3 border-b-2 border-pink-600 text-pink-600 font-bold">
-        Add / Edit Product
-      </button>
-      <button id="tabManageListBtn" onclick="switchAdminTab('list')" class="py-3 px-3 border-b-2 border-transparent text-slate-500 hover:text-slate-800">
-        Inventory List (<span id="adminTotalCount">0</span>)
-      </button>
-      <button id="tabSettingsBtn" onclick="switchAdminTab('settings')" class="py-3 px-3 border-b-2 border-transparent text-slate-500 hover:text-slate-800">
-        Store Info & Backup
-      </button>
-    </div>
-
-    <!-- Drawer Content Area -->
-    <div class="flex-1 overflow-y-auto p-4 sm:p-6 space-y-4">
-      
-      <!-- TAB 1: ADD / EDIT PRODUCT FORM -->
-      <form id="productForm" onsubmit="handleProductSubmit(event)" class="space-y-4">
-        <input type="hidden" id="formProductId" />
-
-        <div class="flex items-center justify-between">
-          <span id="formModeTitle" class="text-xs font-bold uppercase tracking-wider text-slate-400">Add New Meesho Product</span>
-          <button type="button" onclick="resetProductForm()" class="text-xs text-pink-600 font-semibold hover:underline">Clear Fields</button>
-        </div>
-
-        <!-- Product Title -->
-        <div>
-          <label class="block text-xs font-semibold text-slate-700 mb-1">Product Title *</label>
-          <input 
-            type="text" 
-            id="formTitle" 
-            required
-            placeholder="e.g. Kashmiri Hand Embroidered Georgette Saree" 
-            class="w-full px-3 py-2 text-sm border border-slate-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:outline-none"
-          />
-        </div>
-
-        <!-- Category & SKU / Meesho Code -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          <div>
-            <label class="block text-xs font-semibold text-slate-700 mb-1">Category *</label>
-            <select id="formCategory" required class="w-full px-3 py-2 text-sm border border-slate-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:outline-none">
-              <option value="Sarees">Sarees</option>
-              <option value="Kurtis & Suits">Kurtis & Suits</option>
-              <option value="Jewelry">Jewelry</option>
-              <option value="Western Wear">Western Wear</option>
-              <option value="Watches">Watches</option>
-              <option value="Footwear">Footwear</option>
-              <option value="Home & Kitchen">Home & Kitchen</option>
-              <option value="Bags & Accessories">Bags & Accessories</option>
-            </select>
-          </div>
-
-          <div>
-            <label class="block text-xs font-semibold text-slate-700 mb-1">Meesho Product Code / SKU</label>
-            <input 
-              type="text" 
-              id="formSku" 
-              placeholder="e.g. s-184920485" 
-              class="w-full px-3 py-2 text-sm border border-slate-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:outline-none"
-            />
-          </div>
-        </div>
-
-        <!-- Meesho Product URL -->
-        <div>
-          <label class="block text-xs font-semibold text-slate-700 mb-1">
-            Meesho Buying Link / Shared Link *
-          </label>
-          <input 
-            type="url" 
-            id="formMeeshoUrl" 
-            required
-            placeholder="https://meesho.com/s/p/..." 
-            class="w-full px-3 py-2 text-sm border border-slate-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:outline-none"
-          />
-          <p class="text-[11px] text-slate-500 mt-1">Copy & paste the product link directly from your Meesho app.</p>
-        </div>
-
-        <!-- Prices -->
-        <div class="grid grid-cols-2 gap-3">
-          <div>
-            <label class="block text-xs font-semibold text-slate-700 mb-1">Discounted Price (₹) *</label>
-            <input 
-              type="number" 
-              id="formPrice" 
-              required 
-              min="1" 
-              placeholder="499" 
-              class="w-full px-3 py-2 text-sm border border-slate-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:outline-none"
-            />
-          </div>
-          <div>
-            <label class="block text-xs font-semibold text-slate-700 mb-1">Original MRP (₹)</label>
-            <input 
-              type="number" 
-              id="formMrp" 
-              min="1" 
-              placeholder="1299" 
-              class="w-full px-3 py-2 text-sm border border-slate-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:outline-none"
-            />
-          </div>
-        </div>
-
-        <!-- Image URL & Stock Badge -->
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-          <div class="sm:col-span-2">
-            <label class="block text-xs font-semibold text-slate-700 mb-1">Product Image URL *</label>
-            <input 
-              type="url" 
-              id="formImageUrl" 
-              required
-              placeholder="https://images.unsplash.com/..." 
-              class="w-full px-3 py-2 text-sm border border-slate-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:outline-none"
-              oninput="previewFormImage(this.value)"
-            />
-          </div>
-          <div>
-            <label class="block text-xs font-semibold text-slate-700 mb-1">Stock Status</label>
-            <select id="formStock" class="w-full px-3 py-2 text-sm border border-slate-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:outline-none">
-              <option value="in_stock">In Stock</option>
-              <option value="trending">🔥 Trending</option>
-              <option value="limited">Limited Qty</option>
-              <option value="out_of_stock">Out of Stock</option>
-            </select>
-          </div>
-        </div>
-
-        <!-- Image Preview Card -->
-        <div id="imagePreviewBox" class="hidden items-center gap-3 bg-slate-50 p-2.5 rounded-lg border border-slate-200">
-          <img id="imagePreviewEl" src="" alt="preview" class="w-14 h-14 object-cover rounded-md border border-slate-300" />
-          <div>
-            <p class="text-xs font-semibold text-slate-700">Image Preview</p>
-            <p class="text-[11px] text-slate-400">Looks great! Verified link preview.</p>
-          </div>
-        </div>
-
-        <!-- Description / Specifications -->
-        <div>
-          <label class="block text-xs font-semibold text-slate-700 mb-1">Fabric / Material & Details</label>
-          <textarea 
-            id="formDescription" 
-            rows="3" 
-            placeholder="Fabric: Pure Georgette. Work: Zari Embroidery. Length: 5.5m with unstitched blouse..."
-            class="w-full px-3 py-2 text-sm border border-slate-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:outline-none"
-          ></textarea>
-        </div>
-
-        <button 
-          type="submit" 
-          id="submitProductBtn" 
-          class="w-full py-2.5 px-4 bg-gradient-to-r from-pink-600 to-purple-600 text-white font-bold text-sm rounded-xl hover:opacity-95 shadow-md shadow-pink-200 transition"
-        >
-          Save to Meesho Catalog
-        </button>
-      </form>
-
-      <!-- TAB 2: INVENTORY TABLE / LIST -->
-      <div id="adminListTab" class="hidden space-y-3">
-        <div class="flex items-center justify-between">
-          <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400">All Live Items</h3>
-          <span class="text-xs text-slate-500">Click edit to update price or link</span>
-        </div>
-        <div id="adminProductsContainer" class="space-y-2">
-          <!-- Filled by JS -->
-        </div>
-      </div>
-
-      <!-- TAB 3: STORE CONFIG & BACKUP DATA -->
-      <div id="adminSettingsTab" class="hidden space-y-5">
-        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-3">
-          <h4 class="font-bold text-slate-800 text-sm flex items-center gap-2">
-            <i class="ph-bold ph-gear text-pink-600"></i> Store Info Settings
-          </h4>
-          <div>
-            <label class="block text-xs font-medium text-slate-600 mb-1">Store Name</label>
-            <input type="text" id="settingStoreName" class="w-full px-3 py-2 text-sm border rounded-lg" value="Kobila" />
-          </div>
-          <div>
-            <label class="block text-xs font-medium text-slate-600 mb-1">Store Tagline</label>
-            <input type="text" id="settingStoreTagline" class="w-full px-3 py-2 text-sm border rounded-lg" value="Kobila Collection • Direct Meesho Reseller" />
-          </div>
-          <div>
-            <label class="block text-xs font-medium text-slate-600 mb-1">Store Tagline</label>
-            <input type="text" id="settingStoreTagline" class="w-full px-3 py-2 text-sm border rounded-lg" value="Curated Best Sellers • Reseller Hub" />
-          </div>
-          <div>
-            <label class="block text-xs font-medium text-slate-600 mb-1">Seller WhatsApp Number (with country code)</label>
-            <input type="text" id="settingWhatsapp" class="w-full px-3 py-2 text-sm border rounded-lg" value="919876543210" placeholder="919876543210" />
-            <p class="text-[11px] text-slate-400 mt-1">Customers clicking 'Order via WhatsApp' will send inquiries to this number.</p>
-          </div>
-          <button onclick="saveStoreSettings()" class="px-4 py-2 bg-slate-900 text-white text-xs font-bold rounded-lg hover:bg-slate-800">
-            Save Store Info
-          </button>
-        </div>
-
-        <!-- Backup & Restore -->
-        <div class="bg-pink-50/60 p-4 rounded-xl border border-pink-100 space-y-3">
-          <h4 class="font-bold text-slate-800 text-sm flex items-center gap-2">
-            <i class="ph-bold ph-database text-pink-600"></i> Backup & Data Sync
-          </h4>
-          <p class="text-xs text-slate-600">
-            Export your entire product inventory to a JSON file so you can store it on your phone or computer, or restore it anytime.
-          </p>
-          <div class="flex flex-wrap gap-2">
-            <button onclick="exportCatalogData()" class="px-3.5 py-2 bg-pink-600 hover:bg-pink-700 text-white text-xs font-bold rounded-lg flex items-center gap-1.5 shadow-sm">
-              <i class="ph-bold ph-download-simple"></i> Download Backup JSON
-            </button>
-            <label class="px-3.5 py-2 bg-white border border-slate-300 hover:bg-slate-100 text-slate-700 text-xs font-bold rounded-lg flex items-center gap-1.5 cursor-pointer">
-              <i class="ph-bold ph-upload-simple"></i> Import Backup JSON
-              <input type="file" id="importFileInput" accept=".json" class="hidden" onchange="importCatalogData(event)" />
-            </label>
-          </div>
-          <button onclick="restoreDefaults()" class="text-xs text-red-600 hover:underline pt-2 block font-medium">
-            Reset to Sample Meesho Products
-          </button>
-        </div>
-      </div>
-
-    </div>
-  </aside>
-
-  <!-- TOAST NOTIFICATION CONTAINER -->
-  <div id="toast" class="fixed bottom-5 right-5 z-50 transform translate-y-20 opacity-0 transition-all duration-300 bg-slate-900 text-white px-4 py-3 rounded-xl shadow-xl flex items-center gap-2 text-sm max-w-sm pointer-events-none">
-    <i id="toastIcon" class="ph-bold ph-check-circle text-emerald-400 text-lg"></i>
-    <span id="toastMessage">Action completed!</span>
-  </div>
-
-  <!-- FOOTER -->
-  <footer class="bg-white border-t border-slate-200 mt-16 py-8">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left text-xs text-slate-500">
-      <div>
-        <p class="font-bold text-slate-800 text-sm flex items-center justify-center md:justify-start gap-1">
-          <span id="footerStoreName">Kobila</span> Catalog Hub
-        </p>
-        <p class="mt-1">All orders, payments, returns, and shipments are fulfilled directly via the official Meesho app.</p>
-      </div>
-      <div class="flex items-center gap-4 text-xs font-medium text-slate-600">
-        <button onclick="openInventoryDrawer()" class="hover:text-pink-600">Seller Dashboard</button>
+      <p>© 2026 Kobila. Powered by Meesho Reseller Network.</p>
+      <div class="flex items-center gap-4">
+        <span>COD Available</span>
         <span>•</span>
-        <a href="#categoryContainer" class="hover:text-pink-600">Browse Catalog</a>
-        <span>•</span>
-        <button onclick="exportCatalogData()" class="hover:text-pink-600">Download Catalog</button>
+        <span>Verified Supplier Store</span>
       </div>
     </div>
   </footer>
 
-  <!-- SCRIPT: APPLICATION LOGIC & STATE -->
+  <!-- Admin / Stock Manager Drawer -->
+  <div id="adminDrawer" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden transition-opacity">
+    <div class="absolute right-0 top-0 bottom-0 w-full max-w-lg bg-white shadow-2xl flex flex-col transform transition-transform">
+      <!-- Drawer Header -->
+      <div class="px-6 py-4 bg-slate-900 text-white flex items-center justify-between">
+        <div class="flex items-center gap-2.5">
+          <i class="fa-solid fa-boxes-stacked text-pink-400"></i>
+          <div>
+            <h3 class="font-bold text-sm">Kobila Inventory & Links</h3>
+            <p class="text-[11px] text-slate-400">Edit stock, prices, Meesho IDs and WhatsApp number</p>
+          </div>
+        </div>
+        <button onclick="toggleAdminDrawer()" class="text-slate-400 hover:text-white text-lg">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <!-- Drawer Tabs -->
+      <div class="flex border-b border-slate-200 bg-slate-50 text-xs font-semibold">
+        <button id="tabAddBtn" onclick="switchAdminTab('add')" class="flex-1 py-3 text-center border-b-2 border-pink-600 text-pink-600">Add / Edit Item</button>
+        <button id="tabSettingsBtn" onclick="switchAdminTab('settings')" class="flex-1 py-3 text-center border-b-2 border-transparent text-slate-600 hover:text-slate-900">WhatsApp & Store</button>
+        <button id="tabJsonBtn" onclick="switchAdminTab('json')" class="flex-1 py-3 text-center border-b-2 border-transparent text-slate-600 hover:text-slate-900">Backup JSON</button>
+      </div>
+
+      <!-- Drawer Body -->
+      <div class="flex-1 overflow-y-auto p-6 space-y-4 text-xs">
+        <!-- Tab 1: Add Item -->
+        <form id="productForm" onsubmit="handleSaveProduct(event)" class="space-y-3">
+          <input type="hidden" id="editProductId" value="" />
+          <div>
+            <label class="block font-semibold text-slate-700 mb-1">Product Title</label>
+            <input type="text" id="formTitle" required class="w-full border border-slate-300 rounded-lg p-2 focus:border-pink-500 focus:outline-none" placeholder="e.g. Korean Trendy Silver-Tone Double Hoop Earrings" />
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block font-semibold text-slate-700 mb-1">Category</label>
+              <select id="formCategory" class="w-full border border-slate-300 rounded-lg p-2 focus:border-pink-500 focus:outline-none">
+                <option value="Earrings & Studs">Earrings & Studs</option>
+                <option value="Bangles & Bracelets">Bangles & Bracelets</option>
+                <option value="Necklaces & Sets">Necklaces & Sets</option>
+                <option value="Rings">Rings</option>
+              </select>
+            </div>
+            <div>
+              <label class="block font-semibold text-slate-700 mb-1">SKU / Style ID</label>
+              <input type="text" id="formSku" class="w-full border border-slate-300 rounded-lg p-2 focus:border-pink-500 focus:outline-none" placeholder="e.g. KOB-4024" />
+            </div>
+          </div>
+          <div class="grid grid-cols-3 gap-3">
+            <div>
+              <label class="block font-semibold text-slate-700 mb-1">Our Price (₹)</label>
+              <input type="number" id="formPrice" required class="w-full border border-slate-300 rounded-lg p-2 focus:border-pink-500 focus:outline-none" placeholder="100" />
+            </div>
+            <div>
+              <label class="block font-semibold text-slate-700 mb-1">MRP Price (₹)</label>
+              <input type="number" id="formMrp" required class="w-full border border-slate-300 rounded-lg p-2 focus:border-pink-500 focus:outline-none" placeholder="299" />
+            </div>
+            <div>
+              <label class="block font-semibold text-slate-700 mb-1">Stock Status</label>
+              <select id="formStock" class="w-full border border-slate-300 rounded-lg p-2 focus:border-pink-500 focus:outline-none">
+                <option value="In Stock">In Stock</option>
+                <option value="Low Stock (2 Left)">Low Stock (2 Left)</option>
+                <option value="Out of Stock">Out of Stock</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <label class="block font-semibold text-slate-700 mb-1">Catalog ID / Meesho Link</label>
+            <input type="text" id="formLink" class="w-full border border-slate-300 rounded-lg p-2 focus:border-pink-500 focus:outline-none" placeholder="e.g. 607043084 or full https://meesho.com/... link" />
+          </div>
+          <div>
+            <label class="block font-semibold text-slate-700 mb-1">Image URL</label>
+            <input type="url" id="formImage" class="w-full border border-slate-300 rounded-lg p-2 focus:border-pink-500 focus:outline-none" placeholder="https://images.unsplash.com/..." />
+          </div>
+          <div>
+            <label class="block font-semibold text-slate-700 mb-1">Short Description</label>
+            <textarea id="formDesc" rows="2" class="w-full border border-slate-300 rounded-lg p-2 focus:border-pink-500 focus:outline-none" placeholder="Premium silver finish, daily wear hypoallergenic..."></textarea>
+          </div>
+          <div class="pt-2 flex gap-2">
+            <button type="submit" class="flex-1 py-2.5 rounded-lg bg-pink-600 hover:bg-pink-700 text-white font-bold text-xs">Save Product</button>
+            <button type="button" onclick="resetForm()" class="px-4 py-2.5 rounded-lg border border-slate-300 text-slate-600 hover:bg-slate-100 font-bold text-xs">Clear</button>
+          </div>
+        </form>
+
+        <!-- Tab 2: Settings -->
+        <div id="settingsTab" class="hidden space-y-4">
+          <div>
+            <label class="block font-semibold text-slate-700 mb-1">Your WhatsApp Number (For Orders)</label>
+            <input type="text" id="settingsWa" class="w-full border border-slate-300 rounded-lg p-2 text-xs" placeholder="91XXXXXXXXXX (Include country code)" />
+            <p class="text-[10px] text-slate-500 mt-1">Customers will tap "Order on WhatsApp" to message this number with product details.</p>
+          </div>
+          <button onclick="saveSettings()" class="w-full py-2.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs">Update Settings</button>
+        </div>
+
+        <!-- Tab 3: JSON Backup -->
+        <div id="jsonTab" class="hidden space-y-3">
+          <p class="text-slate-600">Copy or download your full inventory JSON file to keep a backup or transfer to another device.</p>
+          <textarea id="jsonOutput" rows="8" readonly class="w-full border border-slate-200 bg-slate-50 font-mono text-[11px] p-2 rounded-lg"></textarea>
+          <div class="flex gap-2">
+            <button onclick="copyJson()" class="flex-1 py-2 rounded-lg bg-slate-800 hover:bg-slate-900 text-white font-bold text-xs">Copy JSON</button>
+            <button onclick="resetToMeeshoDefaults()" class="px-3 py-2 rounded-lg border border-red-300 text-red-600 hover:bg-red-50 font-bold text-xs">Reset to Meesho Items</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script>
-    // INITIAL SAMPLE MEESHO PRODUCTS DATA
-    const INITIAL_SAMPLE_PRODUCTS = [
+    // Live Meesho Supplier Inventory Data for Kobila
+    const INITIAL_CATALOG = [
       {
-        id: "prod-101",
-        title: "Kashmiri Aari Work Georgette Saree With Blouse Piece",
-        sku: "s-2349182",
-        category: "Sarees",
-        price: 549,
-        mrp: 1499,
-        stock: "trending",
-        meeshoUrl: "https://meesho.com/s/p/3v21q?utm_source=reseller",
-        imageUrl: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=700&q=80",
-        description: "Elegant Georgette saree featuring delicate Kashmiri embroidery on borders. Includes 0.8 meter matching unstitched blouse piece. Hand wash recommended."
+        id: "kobila-1",
+        title: "Korean Trendy Silver-Tone Double Hoop Earrings",
+        category: "Earrings & Studs",
+        price: 100,
+        mrp: 299,
+        stock: "Low Stock (2 Left)",
+        sku: "KOB-4024",
+        styleId: "KOB-4024",
+        catalogId: "607043084",
+        meeshoUrl: "https://www.meesho.com/search?q=607043084",
+        image: "https://images.unsplash.com/photo-1630019852942-f89202989a59?auto=format&fit=crop&w=700&q=80",
+        description: "Elegant Korean double hoop earrings in high-grade silver-tone finish. Lightweight and suitable for daily wear."
       },
       {
-        id: "prod-102",
-        title: "Anarkali Kurti & Pant Set with Dupatta (Cotton Blend)",
-        sku: "s-1940284",
-        category: "Kurtis & Suits",
-        price: 699,
-        mrp: 1799,
-        stock: "in_stock",
-        meeshoUrl: "https://meesho.com/s/p/4a88b?utm_source=reseller",
-        imageUrl: "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=700&q=80",
-        description: "Breathable cotton blend floral flared Anarkali kurta with tailored trousers and digital printed chiffon dupatta. Sizes available: M, L, XL, XXL."
+        id: "kobila-2",
+        title: "Unique Designer Studs & Geometric Floral Earrings",
+        category: "Earrings & Studs",
+        price: 120,
+        mrp: 349,
+        stock: "In Stock",
+        sku: "KOB-UNIQ-656",
+        styleId: "KOB-656",
+        catalogId: "606101656",
+        meeshoUrl: "https://www.meesho.com/search?q=606101656",
+        image: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=700&q=80",
+        description: "Minimalist floral and geometric daily-wear studs. Premium alloy with glossy lacquer coating."
       },
       {
-        id: "prod-103",
-        title: "Kundan Gold-Plated Bridal Choker Necklace with Earrings",
-        sku: "s-7281044",
-        category: "Jewelry",
-        price: 299,
-        mrp: 999,
-        stock: "trending",
-        meeshoUrl: "https://meesho.com/s/p/1k93z?utm_source=reseller",
-        imageUrl: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=700&q=80",
-        description: "Traditional high-finish gold plated Kundan and pearl choker with matching drop earrings and maang tikka. Lightweight & skin-friendly alloy."
+        id: "kobila-3",
+        title: "Fancy Black & Gold Contrast Drop Earrings",
+        category: "Earrings & Studs",
+        price: 110,
+        mrp: 299,
+        stock: "In Stock",
+        sku: "KOB-FNC-692",
+        styleId: "KOB-692",
+        catalogId: "605098692",
+        meeshoUrl: "https://www.meesho.com/search?q=605098692",
+        image: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=700&q=80",
+        description: "Contemporary black stone and gold tone studs with delicate dangling beads for party wear."
       },
       {
-        id: "prod-104",
-        title: "Men's Luxury Quartz Chronograph Look Analog Watch",
-        sku: "s-4810231",
-        category: "Watches",
-        price: 349,
-        mrp: 1299,
-        stock: "in_stock",
-        meeshoUrl: "https://meesho.com/s/p/5t81x?utm_source=reseller",
-        imageUrl: "https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=700&q=80",
-        description: "Stainless steel black metallic wrist watch with functional time display, stylish sub-dial look, and scratch-resistant glass."
+        id: "kobila-4",
+        title: "New Trendy Festive Drop Earrings with Ruby Stone Accents",
+        category: "Earrings & Studs",
+        price: 135,
+        mrp: 399,
+        stock: "In Stock",
+        sku: "KOB-NEW-767",
+        styleId: "KOB-767",
+        catalogId: "605078767",
+        meeshoUrl: "https://www.meesho.com/search?q=605078767",
+        image: "https://images.unsplash.com/photo-1611591475102-470e7a729ae7?auto=format&fit=crop&w=700&q=80",
+        description: "Intricately detailed red & golden ethnic earring set. Matches sarees, kurtas, and festive outfits."
       },
       {
-        id: "prod-105",
-        title: "Floral Printed Korean Style Chiffon Maxi Dress",
-        sku: "s-9921473",
-        category: "Western Wear",
-        price: 479,
-        mrp: 1199,
-        stock: "limited",
-        meeshoUrl: "https://meesho.com/s/p/7z32m?utm_source=reseller",
-        imageUrl: "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?auto=format&fit=crop&w=700&q=80",
-        description: "Trendy Tiered western party dress with smocked waist, flutter sleeves, and inner lining for high comfort."
+        id: "kobila-5",
+        title: "Fashionable Pearl-Studded Dangler Earrings",
+        category: "Earrings & Studs",
+        price: 125,
+        mrp: 349,
+        stock: "In Stock",
+        sku: "KOB-FSH-015",
+        styleId: "KOB-015",
+        catalogId: "605023015",
+        meeshoUrl: "https://www.meesho.com/search?q=605023015",
+        image: "https://images.unsplash.com/photo-1629224316810-9d8805b95e76?auto=format&fit=crop&w=700&q=80",
+        description: "Classic teardrop pearls with golden scrollwork. A timeless jewelry piece that shines on every occasion."
       },
       {
-        id: "prod-106",
-        title: "Banarasi Art Silk Jacquard Zari Woven Saree",
-        sku: "s-5103920",
-        category: "Sarees",
-        price: 799,
-        mrp: 2499,
-        stock: "in_stock",
-        meeshoUrl: "https://meesho.com/s/p/8w21c?utm_source=reseller",
-        imageUrl: "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=700&q=80",
-        description: "Rich woven gold zari pallu with traditional floral motifs. Ideal for weddings, festivals, and special family functions."
+        id: "kobila-6",
+        title: "Fancy Traditional Golden Jhumka & Stud Combo",
+        category: "Earrings & Studs",
+        price: 140,
+        mrp: 449,
+        stock: "In Stock",
+        sku: "KOB-JHM-385",
+        styleId: "KOB-385",
+        catalogId: "605001385",
+        meeshoUrl: "https://www.meesho.com/search?q=605001385",
+        image: "https://images.unsplash.com/photo-1579762715118-a6f1d4b934f1?auto=format&fit=crop&w=700&q=80",
+        description: "Traditional bell jhumkas with micro-bead drops. Lightweight and gold-polished."
       },
       {
-        id: "prod-107",
-        title: "Embroidered Kolhapuri Flats / Ethnic Mojari Juttis",
-        sku: "s-3049102",
-        category: "Footwear",
-        price: 389,
-        mrp: 899,
-        stock: "in_stock",
-        meeshoUrl: "https://meesho.com/s/p/2d19y?utm_source=reseller",
-        imageUrl: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=700&q=80",
-        description: "Padded insole handcrafted ethnic ethnic footwear with thread-work and mirror embellishments."
-      },
-      {
-        id: "prod-108",
-        title: "Set of 5 Geometric Velvet Cushion Covers (16x16 inch)",
-        sku: "s-6638192",
-        category: "Home & Kitchen",
-        price: 329,
-        mrp: 999,
-        stock: "in_stock",
-        meeshoUrl: "https://meesho.com/s/p/9q54v?utm_source=reseller",
-        imageUrl: "https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&w=700&q=80",
-        description: "Soft velvet cushion covers featuring concealed zipper closures and HD digital geometric patterns for living room decor."
+        id: "kobila-7",
+        title: "Twinkling Fancy Gold-Plated Bracelet & Bangles Set",
+        category: "Bangles & Bracelets",
+        price: 160,
+        mrp: 499,
+        stock: "In Stock",
+        sku: "KOB-BNG-020",
+        styleId: "KOB-020",
+        catalogId: "604955020",
+        meeshoUrl: "https://www.meesho.com/search?q=604955020",
+        image: "https://images.unsplash.com/photo-1611591475102-470e7a729ae7?auto=format&fit=crop&w=700&q=80",
+        description: "Intricately etched gold plated bangles with twinkling cubic zirconia crystals."
       }
     ];
 
-    // STATE VARIABLES
     let products = [];
-    let selectedCategory = "All";
+    let currentCategory = "All";
     let searchQuery = "";
-    let storeSettings = {
-      name: "Kobila",
-      tagline: "Kobila Collection • Direct Meesho Reseller",
-      whatsapp: "919876543210"
-    };
+    let sortMethod = "featured";
+    let sellerWhatsApp = "919999999999";
 
-    // LOCAL STORAGE KEYS
-    const STORAGE_KEY_PRODUCTS = "meesho_catalog_products";
-    const STORAGE_KEY_SETTINGS = "meesho_catalog_settings";
-
-    // INIT FUNCTION
-    window.addEventListener("DOMContentLoaded", () => {
-      loadStorageData();
-      // Ensure Kobila is set if it was initialized under a previous name
-      if (storeSettings.name === "TrendyMart") {
-        storeSettings.name = "Kobila";
-        storeSettings.tagline = "Kobila Collection • Direct Meesho Reseller";
-        localStorage.setItem(STORAGE_KEY_SETTINGS, JSON.stringify(storeSettings));
-      }
-      renderCategories();
-      filterProducts();
-      updateAdminList();
-      applyStoreSettings();
-    });
-
-    // DATA LOADING & PERSISTENCE
-    function loadStorageData() {
-      try {
-        const savedProducts = localStorage.getItem(STORAGE_KEY_PRODUCTS);
-        if (savedProducts) {
-          products = JSON.parse(savedProducts);
-        } else {
-          products = [...INITIAL_SAMPLE_PRODUCTS];
-          saveProductsToStorage();
-        }
-
-        const savedSettings = localStorage.getItem(STORAGE_KEY_SETTINGS);
-        if (savedSettings) {
-          storeSettings = JSON.parse(savedSettings);
-        }
-      } catch (err) {
-        console.error("Storage error:", err);
-        products = [...INITIAL_SAMPLE_PRODUCTS];
-      }
-    }
-
-    function saveProductsToStorage() {
-      localStorage.setItem(STORAGE_KEY_PRODUCTS, JSON.stringify(products));
-      updateAdminList();
-    }
-
-    function applyStoreSettings() {
-      document.getElementById('storeNameDisplay').innerText = storeSettings.name;
-      document.getElementById('storeTaglineDisplay').innerText = storeSettings.tagline;
-      document.getElementById('footerStoreName').innerText = storeSettings.name;
-      document.getElementById('settingStoreName').value = storeSettings.name;
-      document.getElementById('settingStoreTagline').value = storeSettings.tagline;
-      document.getElementById('settingWhatsapp').value = storeSettings.whatsapp;
+    // Initialize App
+    function initApp() {
+      const savedProducts = localStorage.getItem("kobila_products_v2");
+      const savedWa = localStorage.getItem("kobila_wa_number");
       
-      const whatsappHref = `https://wa.me/${storeSettings.whatsapp.replace(/\D/g, '')}?text=Hello%20${encodeURIComponent(storeSettings.name)}!%20I%20want%20to%20know%20more%20about%20your%20Meesho%20catalog.`;
-      document.getElementById('headerWhatsappBtn').href = whatsappHref;
+      products = savedProducts ? JSON.parse(savedProducts) : INITIAL_CATALOG;
+      if (savedWa) sellerWhatsApp = savedWa;
+
+      document.getElementById("settingsWa").value = sellerWhatsApp;
+      updateHeaderWaLink();
+      renderCategoryPills();
+      renderProducts();
+      updateJsonViewer();
     }
 
-    function saveStoreSettings() {
-      const name = document.getElementById('settingStoreName').value.trim();
-      const tagline = document.getElementById('settingStoreTagline').value.trim();
-      const whatsapp = document.getElementById('settingWhatsapp').value.trim();
-
-      if (!name) {
-        showToast("Please enter a valid store name", "warning");
-        return;
-      }
-
-      storeSettings = { name, tagline, whatsapp };
-      localStorage.setItem(STORAGE_KEY_SETTINGS, JSON.stringify(storeSettings));
-      applyStoreSettings();
-      showToast("Store settings saved successfully!");
+    function updateHeaderWaLink() {
+      const waLink = `https://wa.me/${sellerWhatsApp}?text=${encodeURIComponent("Hello Kobila! I want to inquire about your jewellery catalog.")}`;
+      document.getElementById("directWaHeader").href = waLink;
     }
 
-    // CATEGORIES RENDERING
-    function renderCategories() {
+    // Render Categories
+    function renderCategoryPills() {
       const categories = ["All", ...new Set(products.map(p => p.category))];
-      const container = document.getElementById('categoryContainer');
-      
-      container.innerHTML = categories.map(cat => {
-        const isActive = cat === selectedCategory;
-        const activeClass = isActive 
-          ? "bg-slate-900 text-white shadow-sm font-semibold" 
-          : "bg-white text-slate-700 hover:bg-slate-100 border border-slate-200 font-medium";
-        
-        return `
-          <button 
-            onclick="setCategory('${cat}')"
-            class="whitespace-nowrap px-4 py-1.5 rounded-full text-xs transition duration-150 ${activeClass}"
-          >
-            ${cat}
-          </button>
-        `;
-      }).join('');
+      const container = document.getElementById("categoryPills");
+      container.innerHTML = categories.map(cat => `
+        <button 
+          onclick="filterCategory('${cat}')"
+          class="px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all ${
+            currentCategory === cat 
+            ? 'bg-pink-600 text-white shadow-sm shadow-pink-500/20' 
+            : 'bg-white border border-slate-200 text-slate-600 hover:border-pink-300'
+          }">
+          ${cat}
+        </button>
+      `).join("");
     }
 
-    function setCategory(cat) {
-      selectedCategory = cat;
-      renderCategories();
-      filterProducts();
-    }
-
-    // SEARCH & FILTER LOGIC
-    function handleSearch(val) {
-      searchQuery = val.toLowerCase().trim();
-      document.getElementById('desktopSearchInput').value = val;
-      document.getElementById('mobileSearchInput').value = val;
-      filterProducts();
-    }
-
-    function filterProducts() {
-      const stockVal = document.getElementById('stockFilter').value;
-      const sortVal = document.getElementById('sortBy').value;
-
+    // Render Products
+    function renderProducts() {
       let filtered = products.filter(p => {
-        // Category check
-        const matchCat = (selectedCategory === "All") || (p.category === selectedCategory);
-        
-        // Search query check (title, sku, description, category)
-        const matchSearch = !searchQuery || 
-          p.title.toLowerCase().includes(searchQuery) ||
-          (p.sku && p.sku.toLowerCase().includes(searchQuery)) ||
-          p.category.toLowerCase().includes(searchQuery) ||
-          (p.description && p.description.toLowerCase().includes(searchQuery));
-
-        // Stock filter
-        let matchStock = true;
-        if (stockVal === "in_stock") {
-          matchStock = p.stock !== 'out_of_stock';
-        } else if (stockVal === "trending") {
-          matchStock = p.stock === 'trending';
-        }
-
-        return matchCat && matchSearch && matchStock;
+        const matchesCat = currentCategory === "All" || p.category === currentCategory;
+        const query = searchQuery.toLowerCase();
+        const matchesSearch = 
+          p.title.toLowerCase().includes(query) ||
+          p.sku.toLowerCase().includes(query) ||
+          p.catalogId.includes(query) ||
+          p.category.toLowerCase().includes(query);
+        return matchesCat && matchesSearch;
       });
 
       // Sorting
-      if (sortVal === "price_low") {
+      if (sortMethod === "price-low") {
         filtered.sort((a, b) => a.price - b.price);
-      } else if (sortVal === "price_high") {
+      } else if (sortMethod === "price-high") {
         filtered.sort((a, b) => b.price - a.price);
-      } else if (sortVal === "discount") {
-        filtered.sort((a, b) => {
-          const discA = a.mrp ? ((a.mrp - a.price) / a.mrp) : 0;
-          const discB = b.mrp ? ((b.mrp - b.price) / b.mrp) : 0;
-          return discB - discA;
-        });
       }
 
-      renderProductsGrid(filtered);
+      document.getElementById("totalBadge").innerText = products.length;
+      const grid = document.getElementById("productGrid");
+      const emptyState = document.getElementById("emptyState");
 
-      // Show/Hide reset button
-      const isFiltered = selectedCategory !== "All" || searchQuery !== "" || stockVal !== "all" || sortVal !== "featured";
-      const resetBtn = document.getElementById('clearFiltersBtn');
-      if (isFiltered) {
-        resetBtn.classList.remove('hidden');
-        resetBtn.classList.add('inline-flex');
-      } else {
-        resetBtn.classList.add('hidden');
-        resetBtn.classList.remove('inline-flex');
-      }
-    }
-
-    function resetAllFilters() {
-      selectedCategory = "All";
-      searchQuery = "";
-      document.getElementById('desktopSearchInput').value = "";
-      document.getElementById('mobileSearchInput').value = "";
-      document.getElementById('stockFilter').value = "all";
-      document.getElementById('sortBy').value = "featured";
-      renderCategories();
-      filterProducts();
-    }
-
-    // RENDER PRODUCT CARDS GRID
-    function renderProductsGrid(list) {
-      const grid = document.getElementById('productsGrid');
-      const countEl = document.getElementById('productsCountText');
-      const emptyState = document.getElementById('noProductsFound');
-
-      countEl.innerText = `Showing ${list.length} item${list.length === 1 ? '' : 's'}`;
-
-      if (list.length === 0) {
+      if (filtered.length === 0) {
         grid.innerHTML = "";
-        emptyState.classList.remove('hidden');
+        emptyState.classList.remove("hidden");
         return;
       }
+      emptyState.classList.add("hidden");
 
-      emptyState.classList.add('hidden');
+      grid.innerHTML = filtered.map(product => {
+        const discount = Math.round(((product.mrp - product.price) / product.mrp) * 100);
+        const meeshoTargetUrl = product.meeshoUrl.startsWith("http") 
+          ? product.meeshoUrl 
+          : `https://www.meesho.com/search?q=${encodeURIComponent(product.catalogId || product.sku)}`;
 
-      grid.innerHTML = list.map(item => {
-        // Calculate discount percentage
-        const discount = item.mrp && item.mrp > item.price 
-          ? Math.round(((item.mrp - item.price) / item.mrp) * 100) 
-          : 0;
-
-        // Stock badge UI
-        let badgeHtml = "";
-        if (item.stock === "trending") {
-          badgeHtml = `<span class="bg-amber-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow-sm flex items-center gap-0.5"><i class="ph-fill ph-fire"></i> Hot Deal</span>`;
-        } else if (item.stock === "limited") {
-          badgeHtml = `<span class="bg-rose-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow-sm">Few Left</span>`;
-        } else if (item.stock === "out_of_stock") {
-          badgeHtml = `<span class="bg-slate-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow-sm">Out of Stock</span>`;
-        } else {
-          badgeHtml = `<span class="bg-emerald-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow-sm">Verified</span>`;
-        }
-
-        // WhatsApp pre-filled message URL
-        const whatsappMsg = encodeURIComponent(
-          `Hello ${storeSettings.name}! I am interested in: "${item.title}" (Code: ${item.sku || 'N/A'}). Price: ₹${item.price}. Link: ${item.meeshoUrl}`
+        const waMsg = encodeURIComponent(
+          `Hello Kobila (Jewellery that shines)!\n\nI want to order this item:\n*${product.title}*\nPrice: ₹${product.price} (MRP: ₹${product.mrp})\nSKU: ${product.sku}\nCatalog ID: ${product.catalogId}\nLink: ${meeshoTargetUrl}`
         );
-        const whatsappOrderUrl = `https://wa.me/${storeSettings.whatsapp.replace(/\D/g, '')}?text=${whatsappMsg}`;
 
         return `
-          <div class="group bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
-            <!-- Image Wrap -->
-            <div class="relative bg-slate-100 aspect-square overflow-hidden cursor-pointer" onclick="viewProductDetails('${item.id}')">
+          <div class="bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-all flex flex-col overflow-hidden group">
+            <!-- Product Image -->
+            <div class="relative bg-slate-100 aspect-square overflow-hidden">
               <img 
-                src="${item.imageUrl}" 
-                alt="${item.title}" 
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
-                loading="lazy"
-                onerror="this.onerror=null;this.src='https://placehold.co/600x600/fecdd3/881337?text=Meesho+Product';"
+                src="${product.image}" 
+                alt="${product.title}" 
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                onerror="this.src='https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=700&q=80'"
               />
-              <!-- Stock Badge -->
-              <div class="absolute top-2.5 left-2.5 z-10">
-                ${badgeHtml}
-              </div>
-              <!-- SKU Tag -->
-              ${item.sku ? `
-                <div class="absolute bottom-2 left-2 z-10 bg-black/60 backdrop-blur-xs text-white text-[10px] font-mono px-2 py-0.5 rounded-md">
-                  ${item.sku}
-                </div>
-              ` : ''}
+              <span class="absolute top-2.5 left-2.5 bg-white/90 backdrop-blur-md px-2 py-0.5 rounded-full text-[10px] font-bold text-pink-700 uppercase tracking-wider shadow-sm">
+                ${product.stock}
+              </span>
+              <span class="absolute top-2.5 right-2.5 bg-amber-500 text-white font-extrabold text-[10px] px-2 py-0.5 rounded-md shadow-sm">
+                ${discount}% OFF
+              </span>
             </div>
 
-            <!-- Details Content -->
-            <div class="p-3 sm:p-4 flex-1 flex flex-col justify-between">
+            <!-- Content -->
+            <div class="p-4 flex-1 flex flex-col justify-between">
               <div>
-                <p class="text-[11px] text-pink-600 font-bold uppercase tracking-wider mb-1">${item.category}</p>
-                <h3 
-                  onclick="viewProductDetails('${item.id}')"
-                  class="text-xs sm:text-sm font-semibold text-slate-800 line-clamp-2 hover:text-pink-600 cursor-pointer transition leading-snug"
-                  title="${item.title}"
-                >
-                  ${item.title}
+                <div class="flex items-center justify-between text-[11px] text-slate-400 font-medium mb-1">
+                  <span>${product.category}</span>
+                  <span class="font-mono bg-slate-50 px-1.5 py-0.5 rounded border border-slate-100">SKU: ${product.sku}</span>
+                </div>
+                <h3 class="font-bold text-sm text-slate-900 group-hover:text-pink-600 transition-colors line-clamp-2 leading-snug">
+                  ${product.title}
                 </h3>
+                <p class="text-[11px] text-slate-500 mt-1 line-clamp-2 leading-relaxed">
+                  ${product.description}
+                </p>
+                <div class="mt-2 text-[11px] text-pink-600 font-medium">
+                  Catalog ID: <span class="font-semibold text-slate-800">${product.catalogId}</span>
+                </div>
               </div>
 
-              <div class="mt-3 pt-2 border-t border-slate-100">
-                <!-- Pricing -->
-                <div class="flex items-baseline gap-2 mb-3">
-                  <span class="text-base sm:text-lg font-extrabold text-slate-900">₹${item.price}</span>
-                  ${item.mrp ? `
-                    <span class="text-xs text-slate-400 line-through">₹${item.mrp}</span>
-                    <span class="text-[11px] font-bold text-emerald-600">${discount}% OFF</span>
-                  ` : ''}
+              <!-- Price & CTA -->
+              <div class="mt-4 pt-3 border-t border-slate-100 space-y-2.5">
+                <div class="flex items-baseline gap-2">
+                  <span class="text-xl font-extrabold text-slate-900">₹${product.price}</span>
+                  <span class="text-xs text-slate-400 line-through">₹${product.mrp}</span>
+                  <span class="text-[10px] font-bold text-emerald-600 ml-auto bg-emerald-50 px-2 py-0.5 rounded">Free Delivery</span>
                 </div>
 
-                <!-- Call to Action Buttons -->
-                <div class="flex flex-col gap-2">
-                  <!-- Direct Meesho Buying Link -->
+                <div class="grid grid-cols-2 gap-2">
                   <a 
-                    href="${item.meeshoUrl}" 
+                    href="${meeshoTargetUrl}" 
                     target="_blank" 
-                    rel="noopener noreferrer"
-                    class="w-full py-2 px-3 bg-gradient-to-r from-pink-600 to-meesho-pink hover:opacity-95 text-white text-xs font-bold rounded-xl shadow-sm text-center flex items-center justify-center gap-1.5 transition"
-                  >
-                    <i class="ph-bold ph-shopping-bag"></i>
-                    <span>Buy on Meesho</span>
+                    class="w-full inline-flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl bg-pink-50 hover:bg-pink-100 text-pink-700 text-xs font-bold transition">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span>Buy Meesho</span>
                   </a>
-
-                  <!-- WhatsApp Quick Order Inquiry -->
                   <a 
-                    href="${whatsappOrderUrl}" 
+                    href="https://wa.me/${sellerWhatsApp}?text=${waMsg}" 
                     target="_blank" 
-                    rel="noopener noreferrer"
-                    class="w-full py-1.5 px-3 bg-emerald-50 hover:bg-emerald-100 text-emerald-700 text-xs font-semibold rounded-xl text-center flex items-center justify-center gap-1.5 border border-emerald-200 transition"
-                  >
-                    <i class="ph-fill ph-whatsapp-logo text-emerald-600 text-sm"></i>
-                    <span>Order via WhatsApp</span>
+                    class="w-full inline-flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold shadow-sm shadow-emerald-500/20 transition">
+                    <i class="fa-brands fa-whatsapp text-sm"></i>
+                    <span>WhatsApp</span>
                   </a>
                 </div>
+
+                <button onclick="editProduct('${product.id}')" class="w-full text-center text-[10px] text-slate-400 hover:text-slate-600 font-medium pt-1">
+                  <i class="fa-solid fa-pen-to-square mr-1"></i> Edit in Inventory
+                </button>
               </div>
             </div>
           </div>
         `;
-      }).join('');
+      }).join("");
     }
 
-    // PRODUCT MODAL DETAILS
-    function viewProductDetails(id) {
-      const item = products.find(p => p.id === id);
-      if (!item) return;
-
-      const discount = item.mrp && item.mrp > item.price 
-        ? Math.round(((item.mrp - item.price) / item.mrp) * 100) 
-        : 0;
-
-      const whatsappMsg = encodeURIComponent(
-        `Hi ${storeSettings.name}! I want to order "${item.title}" (Product Code: ${item.sku || 'N/A'}). Price: ₹${item.price}. Link: ${item.meeshoUrl}`
-      );
-      const whatsappUrl = `https://wa.me/${storeSettings.whatsapp.replace(/\D/g, '')}?text=${whatsappMsg}`;
-
-      const modalBody = document.getElementById('modalBody');
-      modalBody.innerHTML = `
-        <div class="flex flex-col md:flex-row gap-5">
-          <div class="w-full md:w-1/2 aspect-square rounded-xl overflow-hidden bg-slate-100 border border-slate-200">
-            <img src="${item.imageUrl}" alt="${item.title}" class="w-full h-full object-cover" />
-          </div>
-          <div class="w-full md:w-1/2 flex flex-col justify-between">
-            <div>
-              <div class="flex items-center gap-2 mb-1">
-                <span class="text-xs font-bold text-pink-600 uppercase">${item.category}</span>
-                ${item.sku ? `<span class="text-xs bg-slate-100 text-slate-600 font-mono px-2 py-0.5 rounded">SKU: ${item.sku}</span>` : ''}
-              </div>
-              <h2 class="text-base sm:text-lg font-bold text-slate-900 leading-snug">${item.title}</h2>
-              
-              <div class="flex items-baseline gap-2 mt-3">
-                <span class="text-2xl font-black text-slate-900">₹${item.price}</span>
-                ${item.mrp ? `
-                  <span class="text-sm text-slate-400 line-through">₹${item.mrp}</span>
-                  <span class="text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded">${discount}% discount</span>
-                ` : ''}
-              </div>
-
-              <div class="mt-4 p-3 bg-slate-50 rounded-xl border border-slate-200 text-xs text-slate-600">
-                <p class="font-semibold text-slate-800 mb-1">Specifications / Notes:</p>
-                <p class="leading-relaxed">${item.description || "High quality fabric and stitching directly dispatched from certified Meesho manufacturers."}</p>
-              </div>
-
-              <div class="mt-3 flex items-center gap-3 text-xs text-slate-500">
-                <span class="flex items-center gap-1"><i class="ph-bold ph-shield-check text-pink-500"></i> Cash on Delivery</span>
-                <span class="flex items-center gap-1"><i class="ph-bold ph-truck text-pink-500"></i> Free Delivery</span>
-              </div>
-            </div>
-
-            <div class="mt-6 space-y-2">
-              <a 
-                href="${item.meeshoUrl}" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                class="w-full py-2.5 px-4 bg-gradient-to-r from-pink-600 to-purple-600 hover:opacity-95 text-white font-bold text-sm rounded-xl text-center flex items-center justify-center gap-2 shadow-md shadow-pink-200"
-              >
-                <i class="ph-bold ph-shopping-bag"></i> Open on Meesho App / Website
-              </a>
-              <a 
-                href="${whatsappUrl}" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                class="w-full py-2 px-4 bg-emerald-500 hover:bg-emerald-600 text-white font-semibold text-xs rounded-xl text-center flex items-center justify-center gap-2 shadow-sm"
-              >
-                <i class="ph-fill ph-whatsapp-logo text-base"></i> Send Inquiry on WhatsApp
-              </a>
-            </div>
-          </div>
-        </div>
-      `;
-
-      const modal = document.getElementById('productDetailModal');
-      modal.classList.remove('hidden');
-      modal.classList.add('flex');
+    // Filter Handlers
+    function filterCategory(cat) {
+      currentCategory = cat;
+      renderCategoryPills();
+      renderProducts();
     }
 
-    function closeProductModal() {
-      const modal = document.getElementById('productDetailModal');
-      modal.classList.add('hidden');
-      modal.classList.remove('flex');
+    function handleSearch(val) {
+      searchQuery = val;
+      renderProducts();
     }
 
-    // ADMIN INVENTORY DRAWER CONTROLS
-    function openInventoryDrawer() {
-      const drawer = document.getElementById('inventoryDrawer');
-      const backdrop = document.getElementById('inventoryDrawerBackdrop');
-      backdrop.classList.remove('hidden');
-      drawer.classList.remove('translate-x-full');
-      updateAdminList();
+    function handleSort(val) {
+      sortMethod = val;
+      renderProducts();
     }
 
-    function closeInventoryDrawer() {
-      const drawer = document.getElementById('inventoryDrawer');
-      const backdrop = document.getElementById('inventoryDrawerBackdrop');
-      drawer.classList.add('translate-x-full');
-      backdrop.classList.add('hidden');
+    function resetFilters() {
+      searchQuery = "";
+      currentCategory = "All";
+      document.getElementById("searchInput").value = "";
+      renderCategoryPills();
+      renderProducts();
     }
 
-    function switchAdminTab(tabName) {
-      const formEl = document.getElementById('productForm');
-      const listEl = document.getElementById('adminListTab');
-      const settingsEl = document.getElementById('adminSettingsTab');
+    // Admin & Drawer Functions
+    function toggleAdminDrawer() {
+      const drawer = document.getElementById("adminDrawer");
+      drawer.classList.toggle("hidden");
+      updateJsonViewer();
+    }
 
-      const btnForm = document.getElementById('tabAddProductBtn');
-      const btnList = document.getElementById('tabManageListBtn');
-      const btnSettings = document.getElementById('tabSettingsBtn');
-
-      [btnForm, btnList, btnSettings].forEach(b => {
-        b.className = "py-3 px-3 border-b-2 border-transparent text-slate-500 hover:text-slate-800 text-xs sm:text-sm font-semibold";
+    function switchAdminTab(tab) {
+      const tabs = ["add", "settings", "json"];
+      tabs.forEach(t => {
+        const btn = document.getElementById(`tab${t.charAt(0).toUpperCase() + t.slice(1)}Btn`);
+        btn.classList.remove("border-pink-600", "text-pink-600");
+        btn.classList.add("border-transparent", "text-slate-600");
       });
 
-      formEl.classList.add('hidden');
-      listEl.classList.add('hidden');
-      settingsEl.classList.add('hidden');
+      document.getElementById("productForm").classList.add("hidden");
+      document.getElementById("settingsTab").classList.add("hidden");
+      document.getElementById("jsonTab").classList.add("hidden");
 
-      if (tabName === 'form') {
-        formEl.classList.remove('hidden');
-        btnForm.className = "py-3 px-3 border-b-2 border-pink-600 text-pink-600 font-bold text-xs sm:text-sm";
-      } else if (tabName === 'list') {
-        listEl.classList.remove('hidden');
-        btnList.className = "py-3 px-3 border-b-2 border-pink-600 text-pink-600 font-bold text-xs sm:text-sm";
-        updateAdminList();
-      } else if (tabName === 'settings') {
-        settingsEl.classList.remove('hidden');
-        btnSettings.className = "py-3 px-3 border-b-2 border-pink-600 text-pink-600 font-bold text-xs sm:text-sm";
+      if (tab === "add") {
+        document.getElementById("tabAddBtn").classList.add("border-pink-600", "text-pink-600");
+        document.getElementById("productForm").classList.remove("hidden");
+      } else if (tab === "settings") {
+        document.getElementById("tabSettingsBtn").classList.add("border-pink-600", "text-pink-600");
+        document.getElementById("settingsTab").classList.remove("hidden");
+      } else if (tab === "json") {
+        document.getElementById("tabJsonBtn").classList.add("border-pink-600", "text-pink-600");
+        document.getElementById("jsonTab").classList.remove("hidden");
+        updateJsonViewer();
       }
     }
 
-    // FORM HANDLING (ADD & EDIT)
-    function previewFormImage(url) {
-      const previewBox = document.getElementById('imagePreviewBox');
-      const previewImg = document.getElementById('imagePreviewEl');
-      if (url && url.startsWith('http')) {
-        previewImg.src = url;
-        previewBox.classList.remove('hidden');
-        previewBox.classList.add('flex');
-      } else {
-        previewBox.classList.add('hidden');
-        previewBox.classList.remove('flex');
-      }
-    }
-
-    function handleProductSubmit(e) {
+    function handleSaveProduct(e) {
       e.preventDefault();
+      const id = document.getElementById("editProductId").value || "kobila-" + Date.now();
+      const title = document.getElementById("formTitle").value;
+      const category = document.getElementById("formCategory").value;
+      const sku = document.getElementById("formSku").value || "KOB-" + Math.floor(1000 + Math.random() * 9000);
+      const price = Number(document.getElementById("formPrice").value);
+      const mrp = Number(document.getElementById("formMrp").value);
+      const stock = document.getElementById("formStock").value;
+      const link = document.getElementById("formLink").value;
+      const image = document.getElementById("formImage").value || "https://images.unsplash.com/photo-1630019852942-f89202989a59?auto=format&fit=crop&w=700&q=80";
+      const desc = document.getElementById("formDesc").value;
 
-      const id = document.getElementById('formProductId').value;
-      const title = document.getElementById('formTitle').value.trim();
-      const category = document.getElementById('formCategory').value;
-      const sku = document.getElementById('formSku').value.trim();
-      const meeshoUrl = document.getElementById('formMeeshoUrl').value.trim();
-      const price = parseFloat(document.getElementById('formPrice').value);
-      const mrp = document.getElementById('formMrp').value ? parseFloat(document.getElementById('formMrp').value) : null;
-      const imageUrl = document.getElementById('formImageUrl').value.trim();
-      const stock = document.getElementById('formStock').value;
-      const description = document.getElementById('formDescription').value.trim();
+      const existingIndex = products.findIndex(p => p.id === id);
+      const productObj = {
+        id,
+        title,
+        category,
+        sku,
+        styleId: sku,
+        catalogId: link.includes("http") ? "" : link,
+        meeshoUrl: link.startsWith("http") ? link : `https://www.meesho.com/search?q=${encodeURIComponent(link || sku)}`,
+        price,
+        mrp,
+        stock,
+        image,
+        description: desc
+      };
 
-      if (!title || !meeshoUrl || !imageUrl || isNaN(price)) {
-        showToast("Please fill in all mandatory fields", "warning");
-        return;
-      }
-
-      if (id) {
-        // Edit Mode
-        const index = products.findIndex(p => p.id === id);
-        if (index !== -1) {
-          products[index] = {
-            id,
-            title,
-            category,
-            sku,
-            meeshoUrl,
-            price,
-            mrp,
-            imageUrl,
-            stock,
-            description
-          };
-          showToast("Product updated successfully!");
-        }
+      if (existingIndex > -1) {
+        products[existingIndex] = productObj;
       } else {
-        // Add Mode
-        const newProd = {
-          id: "prod-" + Date.now(),
-          title,
-          category,
-          sku: sku || `sku-${Math.floor(100000 + Math.random() * 900000)}`,
-          meeshoUrl,
-          price,
-          mrp,
-          imageUrl,
-          stock,
-          description
-        };
-        products.unshift(newProd);
-        showToast("New Meesho product added!");
+        products.unshift(productObj);
       }
 
-      saveProductsToStorage();
-      renderCategories();
-      filterProducts();
-      resetProductForm();
-      switchAdminTab('list');
+      saveAndRefresh();
+      resetForm();
+      toggleAdminDrawer();
     }
 
     function editProduct(id) {
-      const item = products.find(p => p.id === id);
-      if (!item) return;
+      const p = products.find(item => item.id === id);
+      if (!p) return;
 
-      document.getElementById('formProductId').value = item.id;
-      document.getElementById('formTitle').value = item.title;
-      document.getElementById('formCategory').value = item.category;
-      document.getElementById('formSku').value = item.sku || '';
-      document.getElementById('formMeeshoUrl').value = item.meeshoUrl;
-      document.getElementById('formPrice').value = item.price;
-      document.getElementById('formMrp').value = item.mrp || '';
-      document.getElementById('formImageUrl').value = item.imageUrl;
-      document.getElementById('formStock').value = item.stock || 'in_stock';
-      document.getElementById('formDescription').value = item.description || '';
+      document.getElementById("editProductId").value = p.id;
+      document.getElementById("formTitle").value = p.title;
+      document.getElementById("formCategory").value = p.category;
+      document.getElementById("formSku").value = p.sku;
+      document.getElementById("formPrice").value = p.price;
+      document.getElementById("formMrp").value = p.mrp;
+      document.getElementById("formStock").value = p.stock;
+      document.getElementById("formLink").value = p.catalogId || p.meeshoUrl;
+      document.getElementById("formImage").value = p.image;
+      document.getElementById("formDesc").value = p.description;
 
-      document.getElementById('formModeTitle').innerText = "Edit Meesho Item";
-      document.getElementById('submitProductBtn').innerText = "Update Product";
-
-      previewFormImage(item.imageUrl);
-      switchAdminTab('form');
+      switchAdminTab("add");
+      const drawer = document.getElementById("adminDrawer");
+      drawer.classList.remove("hidden");
     }
 
-    function deleteProduct(id) {
-      const item = products.find(p => p.id === id);
-      if (!item) return;
-
-      // Avoid window.confirm as per instructions, safe instant delete with visual feedback
-      products = products.filter(p => p.id !== id);
-      saveProductsToStorage();
-      renderCategories();
-      filterProducts();
-      updateAdminList();
-      showToast("Product deleted from catalog");
+    function resetForm() {
+      document.getElementById("editProductId").value = "";
+      document.getElementById("productForm").reset();
     }
 
-    function resetProductForm() {
-      document.getElementById('productForm').reset();
-      document.getElementById('formProductId').value = "";
-      document.getElementById('formModeTitle').innerText = "Add New Meesho Product";
-      document.getElementById('submitProductBtn').innerText = "Save to Meesho Catalog";
-      document.getElementById('imagePreviewBox').classList.add('hidden');
-    }
-
-    function updateAdminList() {
-      const container = document.getElementById('adminProductsContainer');
-      const countBadge = document.getElementById('adminTotalCount');
-      if (countBadge) countBadge.innerText = products.length;
-
-      if (!container) return;
-
-      if (products.length === 0) {
-        container.innerHTML = `<p class="text-xs text-slate-400 py-4 text-center">No products yet. Use the form to add one.</p>`;
-        return;
+    function saveSettings() {
+      const wa = document.getElementById("settingsWa").value.replace(/[^0-9]/g, "");
+      if (wa) {
+        sellerWhatsApp = wa;
+        localStorage.setItem("kobila_wa_number", wa);
+        updateHeaderWaLink();
+        renderProducts();
+        alert("WhatsApp phone number saved successfully!");
       }
-
-      container.innerHTML = products.map(item => `
-        <div class="flex items-center justify-between p-2.5 bg-slate-50 border border-slate-200 rounded-xl hover:bg-slate-100 transition gap-3">
-          <img src="${item.imageUrl}" alt="" class="w-12 h-12 object-cover rounded-lg border border-slate-300 flex-shrink-0" onerror="this.src='https://placehold.co/100x100/fecdd3/881337?text=Meesho';" />
-          <div class="flex-1 min-w-0">
-            <h4 class="text-xs font-bold text-slate-800 truncate">${item.title}</h4>
-            <div class="flex items-center gap-2 mt-0.5 text-[11px] text-slate-500">
-              <span class="font-semibold text-pink-600">₹${item.price}</span>
-              <span>•</span>
-              <span class="truncate">${item.category}</span>
-              ${item.sku ? `<span>•</span><span class="font-mono text-[10px] bg-slate-200 px-1 rounded">${item.sku}</span>` : ''}
-            </div>
-          </div>
-          <div class="flex items-center gap-1">
-            <button onclick="editProduct('${item.id}')" title="Edit" class="w-7 h-7 rounded-lg bg-white border border-slate-200 hover:bg-slate-200 text-slate-700 flex items-center justify-center">
-              <i class="ph-bold ph-pencil-simple text-xs"></i>
-            </button>
-            <button onclick="deleteProduct('${item.id}')" title="Delete" class="w-7 h-7 rounded-lg bg-white border border-slate-200 hover:bg-red-50 text-red-600 flex items-center justify-center">
-              <i class="ph-bold ph-trash text-xs"></i>
-            </button>
-          </div>
-        </div>
-      `).join('');
     }
 
-    // EXPORT / IMPORT BACKUP
-    function exportCatalogData() {
-      const exportObject = {
-        storeSettings,
-        products,
-        exportedAt: new Date().toISOString()
-      };
-      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(exportObject, null, 2));
-      const downloadAnchor = document.createElement('a');
-      downloadAnchor.setAttribute("href", dataStr);
-      downloadAnchor.setAttribute("download", `${storeSettings.name.toLowerCase().replace(/\s+/g, '_')}_meesho_catalog.json`);
-      document.body.appendChild(downloadAnchor);
-      downloadAnchor.click();
-      downloadAnchor.remove();
-      showToast("Catalog backup downloaded!");
+    function saveAndRefresh() {
+      localStorage.setItem("kobila_products_v2", JSON.stringify(products));
+      renderCategoryPills();
+      renderProducts();
+      updateJsonViewer();
     }
 
-    function importCatalogData(e) {
-      const file = e.target.files[0];
-      if (!file) return;
-
-      const reader = new FileReader();
-      reader.onload = (event) => {
-        try {
-          const parsed = JSON.parse(event.target.result);
-          if (Array.isArray(parsed.products)) {
-            products = parsed.products;
-            if (parsed.storeSettings) {
-              storeSettings = parsed.storeSettings;
-              applyStoreSettings();
-            }
-            saveProductsToStorage();
-            renderCategories();
-            filterProducts();
-            updateAdminList();
-            showToast("Catalog imported successfully!");
-          } else {
-            showToast("Invalid JSON catalog format", "warning");
-          }
-        } catch (err) {
-          showToast("Failed to parse JSON file", "warning");
-        }
-      };
-      reader.readAsText(file);
+    function updateJsonViewer() {
+      document.getElementById("jsonOutput").value = JSON.stringify(products, null, 2);
     }
 
-    function restoreDefaults() {
-      products = [...INITIAL_SAMPLE_PRODUCTS];
-      saveProductsToStorage();
-      renderCategories();
-      filterProducts();
-      updateAdminList();
-      showToast("Restored 8 default Meesho sample items");
+    function copyJson() {
+      const el = document.getElementById("jsonOutput");
+      navigator.clipboard.writeText(el.value);
+      alert("Inventory JSON copied to clipboard!");
     }
 
-    // TOAST NOTIFICATION HELPER
-    function showToast(message, type = "success") {
-      const toast = document.getElementById('toast');
-      const toastMsg = document.getElementById('toastMessage');
-      const toastIcon = document.getElementById('toastIcon');
-
-      toastMsg.innerText = message;
-      if (type === "warning") {
-        toastIcon.className = "ph-bold ph-warning text-amber-400 text-lg";
-      } else {
-        toastIcon.className = "ph-bold ph-check-circle text-emerald-400 text-lg";
+    function resetToMeeshoDefaults() {
+      if (confirm("Reset inventory back to the verified Meesho supplier catalog?")) {
+        products = [...INITIAL_CATALOG];
+        saveAndRefresh();
       }
-
-      toast.classList.remove('translate-y-20', 'opacity-0');
-      toast.classList.add('translate-y-0', 'opacity-100');
-
-      setTimeout(() => {
-        toast.classList.remove('translate-y-0', 'opacity-100');
-        toast.classList.add('translate-y-20', 'opacity-0');
-      }, 3000);
     }
+
+    // Startup
+    window.onload = initApp;
   </script>
 </body>
 </html>
